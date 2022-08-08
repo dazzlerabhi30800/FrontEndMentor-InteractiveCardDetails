@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="credit--card--wrapper">
+        <div class="back" data-cvc="123">
+          <!-- <span class="cvv">123</span> -->
+        </div>
+        <div class="front">
+          <div class="circle--logo">
+            <img src="./images/card-logo.svg" alt="">
+          </div>
+          <div class="card--number">
+            0000 0000 0000 0000
+          </div>
+          <div class="credentials--wrapper">
+            <p class="name">Abhishek Choudhary</p>
+            <p class="date">11/22</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="form--wrapper">
+      <form class="form">
+        <div class="form-control">
+          <label for="name">CARDHOLDER NAME</label>
+          <input type="text" id="name" placeholder="e.g. Abhishek Choudhary">
+          <small>Error</small>
+        </div>
+        <div class="form-control">
+          <label for="number">CARD NUMBER</label>
+          <input type="text" id="number" placeholder="e.g. 1234 5678 9101 1121">
+          <small>Error Here</small>
+        </div>
+        <div class="security--wrapper">
+          <div class="form-control">
+            <label>EXP. DATE (MM/YY)</label>
+            <input type="text" placeholder="MM" id="month">
+            <input type="text" placeholder="YY" id="year">
+            <small>Error</small>
+          </div>
+          <div class="form-control">
+            <label for="cvc">CVC</label>
+            <input id="cvc" type="text" placeholder="e.g. 123">
+            <small>Error</small>
+          </div>
+        </div>
+        <button class="btn">Submit</button>
+      </form>
+
+      <div class="feedback--wrapper">
+        <img src="./images/icon-complete.svg" alt="">
+        <h1 class="heading">thank you!</h1>
+        <p>We've added your card details</p>
+        <button class="btn continue">Continue</button>
+      </div>
+
+    </div>
+
+  </main>
+<!-- 
+  0000 0000 0000 0000
+  Jane Appleseed
+  00/00
+
+  000
+
+  Cardholder Name
+  e.g. Jane Appleseed
+
+  Card Number
+  e.g. 1234 5678 9123 0000
+
+  Exp. Date (MM/YY)
+  MM
+  YY
+
+  CVC
+  e.g. 123
+
+  Confirm -->
+
+  <!-- Completed state start -->
+<!-- 
+  Thank you!
+  We've added your card details
+  Continue -->
+  
+</body>
+<script src="main.js"></script>
+</html>
