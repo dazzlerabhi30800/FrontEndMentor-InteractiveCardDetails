@@ -299,16 +299,17 @@ main {
   .form--wrapper {
     margin: 0;
     justify-content: center;
+    flex-direction: row;
+    width: 100%;
   }
 
   .form {
     width: 50%;
     position: relative;
     transform: translateX(200px) scale(1.1);
-    /* background: blue; */
   }
   .feedback--wrapper {
-    width: 50%;
+    width: 40%;
     position: relative;
     transform: translateX(200px) scale(1.1);
   }
