@@ -79,6 +79,7 @@ main {
   gap: 1rem;
   left: 0;
   transform: translate(5%, 130px);
+  z-index: 444;
   /* left: 30%; */
   box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.349);
   order: 2;

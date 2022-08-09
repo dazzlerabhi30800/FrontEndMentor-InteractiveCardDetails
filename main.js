@@ -9,10 +9,14 @@ const cardName = document.querySelector(".name");
 const expiry = document.querySelector(".date");
 const cardNo = document.querySelector(".card--number");
 const cvc = document.querySelector(".back");
-const feedbackWrapper = document.querySelector('.feedback--wrapper');
+const feedbackWrapper = document.querySelector(".feedback--wrapper");
 
 const submitBtn = document.querySelector(".btn");
-const continueBtn = document.querySelector('.continue');
+const continueBtn = document.querySelector(".continue");
+
+// GSAP
+// gsap.to('.feedback--wrapper', {y: 50, duration: 1, opacity: 1});
+const tl = gsap.timeline({ defaults: { duration: 0.75, ease: "power1.out" } });
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -20,10 +24,21 @@ form.addEventListener("submit", (e) => {
 });
 
 continueBtn.addEventListener("click", () => {
-    feedbackWrapper.style.display = "none";
-    feedbackWrapper.style.opacity = "0";
-    form.style.display = "flex";
-})
+  feedbackWrapper.style.display = "none";
+  feedbackWrapper.style.opacity = "0";
+  form.style.display = "flex";
+  cardName.textContent = "Your Name";
+  cardNo.textContent = "0000 0000 0000";
+  expiry.textContent = `00/00`;
+  cvc.setAttribute("data-cvc", "000");
+  tl.fromTo(".form", { opacity: 0, y: 50}, { opacity: 1, y: 0,});
+  tl.fromTo(
+      ".front",
+      { opacity: 0, transformPerspective: 800, transformOrigin: "center", rotationX: -180 },
+      { opacity: 1, rotationX: 0 },
+      "<"
+    );
+});
 
 function checkInputs() {
   const nameValue = cardholderName.value;
@@ -73,16 +88,26 @@ function checkInputs() {
     cardName.textContent = nameValue;
     cardNo.textContent = numberValue;
     expiry.textContent = `${monthValue}/${yearValue}`;
-    cvc.setAttribute('data-cvc', pinValue);
-
+    cvc.setAttribute("data-cvc", pinValue);
+    
     cardholderName.value = "";
     cardNumber.value = "";
     month.value = "";
     year.value = "";
     pin.value = "";
-
+    
     feedbackWrapper.style.display = "flex";
-    feedbackWrapper.style.opacity = "1";
+    tl.fromTo(
+      ".feedback--wrapper",
+      { opacity: 0, y: 50},
+      { opacity: 1, y: 0}
+      );
+      tl.fromTo(
+        ".front",
+        { opacity: 0, transformPerspective: 800, transformOrigin: "center", rotationX: 180 },
+        { opacity: 1, rotationX: 0 },
+        "<"
+      );
     form.style.display = "none";
   }
 }
@@ -119,8 +144,3 @@ function checkYear(value) {
 function checkPin(value) {
   return /^([1-9]{1})([0-9]{2})$/.test(value);
 }
-
-// console.log(testNumber("3554 4545 4545 4568"));
-// console.log(checkDate("01"));
-// console.log(checkYear("25"));
-// console.log(checkPin("145"));
